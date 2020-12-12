@@ -19,5 +19,11 @@ namespace EmployeePayrollAppWCF
             ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "/GetAllEmployee")]
         IList<EmployeeContract> GetAllEmployee();
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "/get/{EmpId}")]
+        EmployeeContract GetById(string EmpId);
     }
 }
