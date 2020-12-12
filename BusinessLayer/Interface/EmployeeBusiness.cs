@@ -49,5 +49,24 @@ namespace BusinessLayer.Interface
                 return employeeContract;
             }
         }
+        public EmployeeContract AddEmployee(EmployeeContract employeeContract)
+        {
+            try
+            {
+                EmployeeContract empDetails = employeeRepository.AddEmployee(employeeContract);
+                if (empDetails.Id > 0)
+                {
+                    return empDetails;
+                }
+                else
+                {
+                    throw new Exception("Employee not able to add.");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

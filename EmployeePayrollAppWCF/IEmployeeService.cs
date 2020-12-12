@@ -25,5 +25,12 @@ namespace EmployeePayrollAppWCF
         ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "/get/{EmpId}")]
         EmployeeContract GetById(string EmpId);
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "/Add")]
+        EmployeeContract AddEmployee(EmployeeContract employeeContract);
+
     }
 }

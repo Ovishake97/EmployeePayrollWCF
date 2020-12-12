@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using BusinessLayer.Interface;
 using Common;
@@ -32,7 +34,21 @@ namespace EmployeePayrollAppWCF
             int employeeId = Convert.ToInt32(empId);
             return employeeBusiness.GetById(employeeId);
         }
-
+        /// UC2 - Adding an employee
+        public EmployeeContract AddEmployee(EmployeeContract employeeContract)
+        {
+            try
+            {
+                return employeeBusiness.AddEmployee(employeeContract);
+            }
+            catch (Exception e)
+            {
+                ErrorClass err = new ErrorClass();
+                err.success = false;
+                err.message = e.Message;
+                throw new WebFaultException<ErrorClass>(err, HttpStatusCode.NotFound);
+            }
+        }
         public void DoWork()
         {
             throw new NotImplementedException();

@@ -41,6 +41,19 @@ namespace RepositoryLayer.Interface
 
             return employee;
         }
+        public EmployeeContract AddEmployee(EmployeeContract employeeContract)
+        {
+            Emp_Payroll employee = new Emp_Payroll()
+            {
+                name = employeeContract.Name,
+                email = employeeContract.Email,
+                salary = employeeContract.Salary
+            };
+            employeeManagementEntitiesObj.Emp_Payroll.Add(employee);
+            employeeManagementEntitiesObj.SaveChanges();
+            employeeContract.Id = employee.id;
+            return employeeContract;
 
+        }
     }
 }
