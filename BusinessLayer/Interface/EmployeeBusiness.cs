@@ -17,6 +17,9 @@ namespace BusinessLayer.Interface
         {
             employeeRepository = new EmployeeRepository();
         }
+        ///UC1
+        ///Retrieving the employee list with the help of the method written in the repository section
+        ///and returning the list of employees
         public IList<EmployeeContract> GetAllEmployee()
         {
             IList<EmployeeContract> employeeContracts = employeeRepository.GetAllEmployee();
@@ -29,6 +32,9 @@ namespace BusinessLayer.Interface
                 return new List<EmployeeContract>();
             }
         }
+        /// UC2
+        /// Retrieving an employee with the help of the id and
+        /// filling up the EmployeeContract object with the obtained data
         public EmployeeContract GetById(int empId)
         {
             EmployeeContract employeeContract = null;
@@ -49,6 +55,9 @@ namespace BusinessLayer.Interface
                 return employeeContract;
             }
         }
+        /// UC3
+        /// Retrieving the added employee with the help of the method written in repository
+        /// and filling up the EmployeeContract object with it
         public EmployeeContract AddEmployee(EmployeeContract employeeContract)
         {
             try
@@ -68,6 +77,8 @@ namespace BusinessLayer.Interface
                 throw new Exception(e.Message);
             }
         }
+        /// UC4
+        /// Similar logic as UC3
         public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract)
         {
             try
@@ -81,6 +92,9 @@ namespace BusinessLayer.Interface
                 throw new Exception(e.Message);
             }
         }
+        /// UC5
+        /// Checking whether SaveChanges() is working or not 
+        /// and returning a desired set of message
         public string UpdateEmployee(EmployeeContract employeeContract, int EmpId)
         {
             if (employeeRepository.UpdateEmployee(employeeContract, EmpId) == 1)
@@ -90,6 +104,20 @@ namespace BusinessLayer.Interface
             else
             {
                 return "Employee not updated";
+            }
+        }
+        /// UC6
+        /// Checking whether SaveChanges() is working or not 
+        /// and returning a desired set of message
+        public string DeleteEmployee(int empId)
+        {
+            if (employeeRepository.DeleteEmployee(empId) == 1)
+            {
+                return "Employee deleted successfuly";
+            }
+            else
+            {
+                return "Employee does not exists.";
             }
         }
     }

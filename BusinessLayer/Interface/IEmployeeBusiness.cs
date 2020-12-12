@@ -14,5 +14,6 @@ namespace BusinessLayer.Interface
         EmployeeContract AddEmployee(EmployeeContract employeeContract);
         List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract);
         string UpdateEmployee(EmployeeContract employeeContract, int EmpId);
+        string DeleteEmployee(int empId);
     }
 }

@@ -29,12 +29,16 @@ namespace EmployeePayrollAppWCF
             return employeeBusiness.GetAllEmployee();
         }
         /// UC2 - Retrieving a single employee 
+        /// It passes the employee id to the method written in the business logic proejct and
+        /// returns the resultant object
         public EmployeeContract GetById(string empId)
         {
             int employeeId = Convert.ToInt32(empId);
             return employeeBusiness.GetById(employeeId);
         }
         /// UC3 - Adding an employee
+        /// Passes the object to the method written in the business logic project
+        /// and returns the resultant list
         public EmployeeContract AddEmployee(EmployeeContract employeeContract)
         {
             try
@@ -49,7 +53,9 @@ namespace EmployeePayrollAppWCF
                 throw new WebFaultException<ErrorClass>(err, HttpStatusCode.NotFound);
             }
         }
-        //UC4-Adding Multiple Employees
+        ///UC4-Adding Multiple Employees
+        ///Passes the list to the method written in the business logic project
+        ///and returns resultant list
         public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employees)
         {
             try
@@ -65,10 +71,20 @@ namespace EmployeePayrollAppWCF
             }
         }
         /// UC5 - Updating an employee record
+        /// The method passes the employee id to the function written in the business logic project
+        ///and returns the resultant message in string format
         public string UpdateEmployee(EmployeeContract employeeContract, string empId)
         {
             int employeeId = Convert.ToInt32(empId);
             return employeeBusiness.UpdateEmployee(employeeContract, employeeId);
+        }
+        ///UC6-Deleting an employee
+        ///The method passes the employee id to the function written in the business logic project
+        ///and returns the resultant message in string format
+        public string DeleteEmployee(string empId)
+        {
+            int employeeId = Convert.ToInt32(empId);
+            return employeeBusiness.DeleteEmployee(employeeId);
         }
         public void DoWork()
         {

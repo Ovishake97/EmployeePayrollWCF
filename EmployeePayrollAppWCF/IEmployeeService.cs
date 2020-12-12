@@ -43,6 +43,12 @@ namespace EmployeePayrollAppWCF
         ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "/Update/{EmpId}")]
         string UpdateEmployee(EmployeeContract employeeContract, string empId);
+        [OperationContract]
+        [WebInvoke(Method = "DELETE",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "/delete/{EmpId}")]
+        string DeleteEmployee(string EmpId);
 
     }
 }

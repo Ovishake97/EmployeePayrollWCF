@@ -15,5 +15,6 @@ namespace RepositoryLayer.Interface
         EmployeeContract AddEmployee(EmployeeContract employeeContract);
         List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract);
         int UpdateEmployee(EmployeeContract employeeContract, int EmpId);
+        int DeleteEmployee(int empId);
     }
 }
