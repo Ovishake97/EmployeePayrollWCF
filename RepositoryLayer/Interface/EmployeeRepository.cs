@@ -15,7 +15,7 @@ namespace RepositoryLayer.Interface
         {
             employeeManagementEntitiesObj = new employee_contact_wcfEntities1();
         }
-
+        ///UC1
         public IList<EmployeeContract> GetAllEmployee()
         {
             var query = (from a in employeeManagementEntitiesObj.Emp_Payroll select a).Distinct();
@@ -34,6 +34,7 @@ namespace RepositoryLayer.Interface
 
             return employeeData;
         }
+        //UC2
         public Emp_Payroll GetById(int empId)
         {
             var employee = employeeManagementEntitiesObj.Emp_Payroll
@@ -41,6 +42,7 @@ namespace RepositoryLayer.Interface
 
             return employee;
         }
+        //UC3
         public EmployeeContract AddEmployee(EmployeeContract employeeContract)
         {
             Emp_Payroll employee = new Emp_Payroll()
@@ -55,6 +57,7 @@ namespace RepositoryLayer.Interface
             return employeeContract;
 
         }
+        //UC4
         public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract)
         {
             foreach (EmployeeContract emp in employeeContract)
@@ -72,6 +75,7 @@ namespace RepositoryLayer.Interface
 
             return employeeContract;
         }
+        //UC5
         public int UpdateEmployee(EmployeeContract employeeContract, int EmpId)
         {
             Emp_Payroll employee = employeeManagementEntitiesObj
@@ -88,5 +92,22 @@ namespace RepositoryLayer.Interface
                 throw new Exception("Employee do not exists");
             }
         }
+        //UC6
+        public int DeleteEmployee(int empId)
+        {
+            var employee = (from a in employeeManagementEntitiesObj.Emp_Payroll
+                            where a.id == empId
+                            select a).FirstOrDefault();
+            if (employee != null)
+            {
+                employeeManagementEntitiesObj.Emp_Payroll.Remove(employee);
+                return employeeManagementEntitiesObj.SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
     }
 }
