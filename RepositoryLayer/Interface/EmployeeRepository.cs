@@ -55,5 +55,22 @@ namespace RepositoryLayer.Interface
             return employeeContract;
 
         }
+        public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract)
+        {
+            foreach (EmployeeContract emp in employeeContract)
+            {
+                Emp_Payroll employee = new Emp_Payroll()
+                {
+                    name = emp.Name,
+                    email = emp.Email,
+                    salary = emp.Salary
+                };
+                employeeManagementEntitiesObj.Emp_Payroll.Add(employee);
+                employeeManagementEntitiesObj.SaveChanges();
+                emp.Id = employee.id;
+            }
+
+            return employeeContract;
+        }
     }
 }

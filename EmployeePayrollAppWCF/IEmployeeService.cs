@@ -31,6 +31,12 @@ namespace EmployeePayrollAppWCF
             ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "/Add")]
         EmployeeContract AddEmployee(EmployeeContract employeeContract);
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+          RequestFormat = WebMessageFormat.Json,
+          ResponseFormat = WebMessageFormat.Json,
+          UriTemplate = "/AddMultiple")]
+        List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract);
 
     }
 }
