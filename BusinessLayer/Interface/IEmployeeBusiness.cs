@@ -12,5 +12,6 @@ namespace BusinessLayer.Interface
         IList<EmployeeContract> GetAllEmployee();
         EmployeeContract GetById(int empId);
         EmployeeContract AddEmployee(EmployeeContract employeeContract);
+        List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract);
     }
 }

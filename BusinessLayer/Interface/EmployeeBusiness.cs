@@ -68,5 +68,18 @@ namespace BusinessLayer.Interface
                 throw new Exception(e.Message);
             }
         }
+        public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract)
+        {
+            try
+            {
+
+                List<EmployeeContract> empDetails = employeeRepository.AddMultipleEmployees(employeeContract);
+                return empDetails;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

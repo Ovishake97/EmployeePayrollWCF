@@ -34,12 +34,27 @@ namespace EmployeePayrollAppWCF
             int employeeId = Convert.ToInt32(empId);
             return employeeBusiness.GetById(employeeId);
         }
-        /// UC2 - Adding an employee
+        /// UC3 - Adding an employee
         public EmployeeContract AddEmployee(EmployeeContract employeeContract)
         {
             try
             {
                 return employeeBusiness.AddEmployee(employeeContract);
+            }
+            catch (Exception e)
+            {
+                ErrorClass err = new ErrorClass();
+                err.success = false;
+                err.message = e.Message;
+                throw new WebFaultException<ErrorClass>(err, HttpStatusCode.NotFound);
+            }
+        }
+        //UC4-Adding Multiple Employees
+        public List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employees)
+        {
+            try
+            {
+                return employeeBusiness.AddMultipleEmployees(employees);
             }
             catch (Exception e)
             {
