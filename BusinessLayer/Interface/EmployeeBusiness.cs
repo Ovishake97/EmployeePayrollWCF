@@ -81,5 +81,16 @@ namespace BusinessLayer.Interface
                 throw new Exception(e.Message);
             }
         }
+        public string UpdateEmployee(EmployeeContract employeeContract, int EmpId)
+        {
+            if (employeeRepository.UpdateEmployee(employeeContract, EmpId) == 1)
+            {
+                return "Employee updated successfully";
+            }
+            else
+            {
+                return "Employee not updated";
+            }
+        }
     }
 }

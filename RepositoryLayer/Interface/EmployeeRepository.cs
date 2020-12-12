@@ -72,5 +72,21 @@ namespace RepositoryLayer.Interface
 
             return employeeContract;
         }
+        public int UpdateEmployee(EmployeeContract employeeContract, int EmpId)
+        {
+            Emp_Payroll employee = employeeManagementEntitiesObj
+                .Emp_Payroll.Find(EmpId);
+            if (employee != null)
+            {
+                employee.email = employeeContract.Email;
+                employee.name = employeeContract.Name;
+                employee.salary = employeeContract.Salary;
+                return employeeManagementEntitiesObj.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Employee do not exists");
+            }
+        }
     }
 }
