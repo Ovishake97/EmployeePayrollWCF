@@ -26,6 +26,12 @@ namespace EmployeePayrollAppWCF
         {
             return employeeBusiness.GetAllEmployee();
         }
+        /// UC2 - Retrieving a single employee 
+        public EmployeeContract GetById(string empId)
+        {
+            int employeeId = Convert.ToInt32(empId);
+            return employeeBusiness.GetById(employeeId);
+        }
 
         public void DoWork()
         {

@@ -34,6 +34,13 @@ namespace RepositoryLayer.Interface
 
             return employeeData;
         }
-        
+        public Emp_Payroll GetById(int empId)
+        {
+            var employee = employeeManagementEntitiesObj.Emp_Payroll
+                .Find(empId);
+
+            return employee;
+        }
+
     }
 }

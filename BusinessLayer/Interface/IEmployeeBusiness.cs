@@ -10,5 +10,7 @@ namespace BusinessLayer.Interface
     public interface IEmployeeBusiness
     {
         IList<EmployeeContract> GetAllEmployee();
+        EmployeeContract GetById(int empId);
+
     }
 }
