@@ -14,5 +14,6 @@ namespace RepositoryLayer.Interface
         Emp_Payroll GetById(int empId);
         EmployeeContract AddEmployee(EmployeeContract employeeContract);
         List<EmployeeContract> AddMultipleEmployees(List<EmployeeContract> employeeContract);
+        int UpdateEmployee(EmployeeContract employeeContract, int EmpId);
     }
 }

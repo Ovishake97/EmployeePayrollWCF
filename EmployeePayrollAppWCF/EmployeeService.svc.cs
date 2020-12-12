@@ -64,6 +64,12 @@ namespace EmployeePayrollAppWCF
                 throw new WebFaultException<ErrorClass>(err, HttpStatusCode.NotFound);
             }
         }
+        /// UC5 - Updating an employee record
+        public string UpdateEmployee(EmployeeContract employeeContract, string empId)
+        {
+            int employeeId = Convert.ToInt32(empId);
+            return employeeBusiness.UpdateEmployee(employeeContract, employeeId);
+        }
         public void DoWork()
         {
             throw new NotImplementedException();
